@@ -5,7 +5,7 @@
             "name": "[ROOT]"
         },
         {
-            "path": "office-viewer-lib",
+            "path": "lib",
             "name": "[LIB]"
         }
     ],
