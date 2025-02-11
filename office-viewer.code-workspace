@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "[ROOT]"
+        },
+        {
+            "path": "office-viewer-lib",
+            "name": "[LIB]"
+        }
+    ],
+}
