@@ -11,6 +11,7 @@ This project is a software that parses Office files.
 
 ```bash
 cd lib
+wit-bindgen rust --out-dir src --world parser wit/world.wit
 cargo component build --target wasm32-unknown-unknown
 ```
 

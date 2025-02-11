@@ -1,15 +1,15 @@
 #[allow(warnings)]
-mod bindings;
+mod parser;
 
-use bindings::Guest;
+use parser::Guest;
 
 struct Component;
 
 impl Guest for Component {
-    /// Say hello!
-    fn hello_world() -> String {
-        "Hello, World!".to_string()
+    fn parse_file(raw_data: Vec<u8>) -> String {
+        // Implement the logic to parse the raw_data and return a string
+        String::from_utf8(raw_data).unwrap_or_else(|_| "Invalid UTF-8 data".to_string())
     }
 }
 
-bindings::export!(Component with_types_in bindings);
+parser::export!(Component with_types_in parser);

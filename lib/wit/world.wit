@@ -1,6 +1,5 @@
 package office:office-viewer-lib;
 
-/// An example world for the component to target.
 world parser {
-    export hello-world: func() -> string;
+    export parse-file: func(raw-data: list<u8>) -> string;
 }
