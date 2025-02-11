@@ -1,16 +1,22 @@
 {
-    "folders": [
-        {
-            "path": ".",
-            "name": "[ROOT]"
-        },
-        {
-            "path": "lib",
-            "name": "[LIB]"
-        },
-        {
-            "path": "cli",
-            "name": "[CLI]"
-        }
-    ],
+  "folders": [
+    {
+      "path": ".",
+      "name": "[ROOT]"
+    },
+    {
+      "path": "lib",
+      "name": "[LIB]"
+    },
+    {
+      "path": "cli",
+      "name": "[CLI]"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "[rust]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    }
+  }
 }

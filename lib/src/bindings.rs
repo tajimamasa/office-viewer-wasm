@@ -4,7 +4,8 @@
 #[doc(hidden)]
 #[allow(non_snake_case)]
 pub unsafe fn _export_hello_world_cabi<T: Guest>() -> *mut u8 {
-    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
+    #[cfg(target_arch = "wasm32")]
+    _rt::run_ctors_once();
     let result0 = T::hello_world();
     let ptr1 = _RET_AREA.0.as_mut_ptr().cast::<u8>();
     let vec2 = (result0.into_bytes()).into_boxed_slice();

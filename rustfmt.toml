@@ -1,0 +1,12 @@
+# rustfmt configuration file
+# This file contains default settings for rustfmt.
+# You can customize these settings as needed.
+
+# Use spaces instead of tabs
+hard_tabs = false
+
+# Maximum width of each line
+max_width = 100
+
+# Reorder imports alphabetically
+reorder_imports = true
