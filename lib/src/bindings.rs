@@ -26,7 +26,7 @@ pub trait Guest {
     fn hello_world() -> _rt::String;
 }
 #[doc(hidden)]
-macro_rules! __export_world_example_cabi {
+macro_rules! __export_world_parser_cabi {
     ($ty:ident with_types_in $($path_to_types:tt)*) => {
         const _ : () = { #[export_name = "hello-world"] unsafe extern "C" fn
         export_hello_world() -> * mut u8 { $($path_to_types)*::
@@ -36,7 +36,7 @@ macro_rules! __export_world_example_cabi {
     };
 }
 #[doc(hidden)]
-pub(crate) use __export_world_example_cabi;
+pub(crate) use __export_world_parser_cabi;
 #[repr(align(4))]
 struct _RetArea([::core::mem::MaybeUninit<u8>; 8]);
 static mut _RET_AREA: _RetArea = _RetArea([::core::mem::MaybeUninit::uninit(); 8]);
@@ -75,25 +75,25 @@ mod _rt {
 /// ```
 #[allow(unused_macros)]
 #[doc(hidden)]
-macro_rules! __export_example_impl {
+macro_rules! __export_parser_impl {
     ($ty:ident) => {
         self::export!($ty with_types_in self);
     };
     ($ty:ident with_types_in $($path_to_types_root:tt)*) => {
-        $($path_to_types_root)*:: __export_world_example_cabi!($ty with_types_in
+        $($path_to_types_root)*:: __export_world_parser_cabi!($ty with_types_in
         $($path_to_types_root)*);
     };
 }
 #[doc(inline)]
-pub(crate) use __export_example_impl as export;
+pub(crate) use __export_parser_impl as export;
 #[cfg(target_arch = "wasm32")]
-#[link_section = "component-type:wit-bindgen:0.36.0:component:office-viewer-lib:example:encoded world"]
+#[link_section = "component-type:wit-bindgen:0.36.0:office:office-viewer-lib:parser:encoded world"]
 #[doc(hidden)]
-pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 192] = *b"\
-\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07C\x01A\x02\x01A\x02\x01\
-@\0\0s\x04\0\x0bhello-world\x01\0\x04\0#component:office-viewer-lib/example\x04\0\
-\x0b\x0d\x01\0\x07example\x03\0\0\0G\x09producers\x01\x0cprocessed-by\x02\x0dwit\
--component\x070.220.0\x10wit-bindgen-rust\x060.36.0";
+pub static __WIT_BINDGEN_COMPONENT_TYPE: [u8; 187] = *b"\
+\0asm\x0d\0\x01\0\0\x19\x16wit-component-encoding\x04\0\x07?\x01A\x02\x01A\x02\x01\
+@\0\0s\x04\0\x0bhello-world\x01\0\x04\0\x1foffice:office-viewer-lib/parser\x04\0\
+\x0b\x0c\x01\0\x06parser\x03\0\0\0G\x09producers\x01\x0cprocessed-by\x02\x0dwit-\
+component\x070.220.1\x10wit-bindgen-rust\x060.36.0";
 #[inline(never)]
 #[doc(hidden)]
 pub fn __link_custom_section_describing_imports() {

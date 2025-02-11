@@ -11,12 +11,12 @@ This project is a software that parses Office files.
 
 ```bash
 cd lib
-cargo component build
+cargo component build --target wasm32-unknown-unknown
 ```
 
 2. Build CLI Part.
 
 ```bash
 cd cli
-cargo build
+cargo run ../lib/target/wasm32-unknown-unknown/debug/office_viewer_lib.wasm
 ```
